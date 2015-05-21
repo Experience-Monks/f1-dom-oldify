@@ -59,18 +59,6 @@ var toApply = {
   alpha: 0.5
 };
 
-console.log('here');
-
-test( 'check init', function( t ) {
-  var el = getEL();
-
-  applyParsers( el, toApply );
-
-  t.equal( el.style.position, 'absolute', 'elements position is absolute' );
-
-  t.end();
-});
-
 test( 'check supported props', function( t ) {
 
   t.deepEqual( supportedProps, {
@@ -109,7 +97,9 @@ test( 'apply transform orgin', function( t ) {
 
   var el = getEL();
 
-  applyParsers( el, toApply );
+  applyParsers( el, {
+    anchor: [0.33, 0.8, 0]
+  });
 
   document.body.appendChild( el );
 
@@ -122,7 +112,9 @@ test( 'apply opacity', function( t ) {
 
   var el = getEL();
 
-  applyParsers( el, toApply );
+  applyParsers( el, {
+    alpha: 0.5
+  });
 
   document.body.appendChild( el );
 
@@ -155,19 +147,20 @@ test( 'apply text', function( t ) {
 
 test( 'apply color 4', function( t ) {
 
-  // cannot use a real html element here since Webkit browser
-  // Does something like Math.floor(0.5 * 255) / 255 internally
-  // var el = getEL();
-  var el = {
-    style: {}
-  };
+  var el = getEL();
+  el.innerHTML = 'apply color 4';
 
   el.innerHTML = 'i should have colour set';
-  applyParsers( el, toApply );
-  applyParsers( el, toApply );
+  applyParsers( el, {
+    color: [ 255, 255, 255, 0.5 ]
+  });
 
-  t.equal( el.style.color, 'rgba(11,22,33,0.5)', 'color set correctly' );
-  t.equal( el.style.backgroundColor, 'rgba(22,33,44,0.75)', 'background-color set correctly' );
+  applyParsers( el, {
+    backgroundColor: [ 255, 0, 255, 0.3 ]
+  });
+
+  t.equal( el.style.color, 'rgba(255,255,255,0.5)', 'color set correctly' );
+  t.equal( el.style.backgroundColor, 'rgba(255,0,255,0.3)', 'background-color set correctly' );
 
   t.end();
 });
@@ -181,13 +174,23 @@ function applyParsers(el, toApply) {
 function getEL() {
 
   var el;
+  var container;
 
   try {
+      container = document.createElement( 'div' );
+
       el = document.createElement( 'div' );
 
       el.style.backgroundColor = '#CAFE00';
       el.style.width = el.style.height = '100px';
-      document.body.appendChild(el);
+      el.style.position = 'absolute';
+      el.style.left = el.style.top = '0px';
+
+      container.style.position = 'relative';
+      container.style.height = '200px';
+
+      container.appendChild(el);
+      document.body.appendChild(container);
   } catch(e) {
 
     el = {};
