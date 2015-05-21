@@ -1,0 +1,36 @@
+{
+  "name": "f1-dom-oldify",
+  "version": "1.0.0",
+  "description": "This module will take the d1-dom module and \"oldify\" it. This means it will remove css transforms and instead use other css methods",
+  "main": "index.js",
+  "license": "MIT",
+  "author": {
+    "name": "Mikko Haapoja",
+    "email": "me@mikkoh.com",
+    "url": "https://github.com/mikkoh"
+  },
+  "dependencies": {
+    "ie-css-transform": "^1.0.2",
+    "ie-version": "^0.1.0"
+  },
+  "peerDependencies": {
+    "f1-dom": "2.x"
+  },
+  "devDependencies": {
+    "tape": "^4.0.0"
+  },
+  "scripts": {
+    "test": "node test.js"
+  },
+  "keywords": [
+    "f1,dom,oldify,ie"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/Jam3/f1-dom-oldify.git"
+  },
+  "homepage": "https://github.com/Jam3/f1-dom-oldify",
+  "bugs": {
+    "url": "https://github.com/Jam3/f1-dom-oldify/issues"
+  }
+}
