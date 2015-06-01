@@ -10,7 +10,7 @@
     "url": "https://github.com/mikkoh"
   },
   "dependencies": {
-    "ie-css-transform": "^1.0.2",
+    "ie-css-transform": "^1.0.4",
     "ie-version": "^0.1.0"
   },
   "peerDependencies": {

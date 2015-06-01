@@ -1,11 +1,14 @@
+var shims = require('./lib/shims');
 var f1Dom = require('f1-dom');
 var f1DomTransform = require('f1-dom/transform');
 var f1DomTransformOrigin = require('f1-dom/transformOrigin');
 var f1DomColor = require('f1-dom/color');
 var f1DomBackgroundColor = require('f1-dom/backgroundColor');
+var f1DomOpacity = require('f1-dom/opacity');
 var oldTransform = require('./transformAndTransformOrigin');
 var oldColor = require('./color');
 var oldBackgroundColor = require('./backgroundColor');
+var oldOpacity = require('./opacity');
 
 
 var oldified = [];
@@ -33,6 +36,12 @@ f1Dom.forEach( function(func) {
 
     case f1DomBackgroundColor:
       oldified.push(oldBackgroundColor);
+    break;
+
+    case f1DomOpacity:
+      // add this to the start of the array so
+      // matrix will be applied after
+      oldified.unshift(oldOpacity);
     break;
 
     default:
