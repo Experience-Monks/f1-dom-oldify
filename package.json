@@ -10,15 +10,13 @@
     "url": "https://github.com/mikkoh"
   },
   "dependencies": {
-    "ie-css-transform": "^1.1.0",
+    "ie-css-transform": "^1.1.1",
     "ie-version": "^0.1.0"
   },
   "peerDependencies": {
-    "f1-dom": "2.x"
+    "f1-dom": "3.x"
   },
-  "devDependencies": {
-    "tape": "^4.0.0"
-  },
+  "devDependencies": {},
   "scripts": {
     "test": "node test.js"
   },
