@@ -4,6 +4,12 @@
 
 This module will take the f1-dom module and "oldify" it. For instance instead of running css 3d transforms it will emulate the same through ie filter operations on older versions of ie.
 
+Known issues:
+
+1. Webkit renders perspective transforms differently so visually some elements do not match 100%
+2. Older ie browsers do not support perspective transformations so 3d rotations are mimiced through skews. This means rotations do not look correct but will look similar.
+3. Older ie browsers do not support rgba background colours so alpha is currently bring ignored by f1-dom-oldify for colours.
+
 ## Usage
 
 [![NPM](https://nodei.co/npm/f1-dom-oldify.png)](https://www.npmjs.com/package/f1-dom-oldify)
